@@ -9,10 +9,10 @@ public class SphereController : MonoBehaviour
     {
         
     }
-
+   public float rate = 0.01f;
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = Vector3.Lerp(transform.position,Raycaster.instance.targetPosition,rate);
     }
 }
