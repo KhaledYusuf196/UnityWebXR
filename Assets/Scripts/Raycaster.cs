@@ -5,7 +5,7 @@ using WebXR;
 
 public class Raycaster : MonoBehaviour
 {
-    public Vector3 targetPosition;
+    [HideInInspector]public Vector3 targetPosition;
     Transform currentCamera;
     [SerializeField] Transform MainCamera, VRCamera;
     static Raycaster raycaster;
