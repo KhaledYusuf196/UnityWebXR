@@ -5,13 +5,23 @@ using WebXR;
 
 public class Raycaster : MonoBehaviour
 {
+    public Vector3 targetPosition;
     Transform currentCamera;
     [SerializeField] Transform MainCamera, VRCamera;
-    [SerializeField] GameObject tartgetObject;
-    // Start is called before the first frame update
-    void Start()
+    static Raycaster raycaster;
+    static Raycaster instance => raycaster;
+
+    private void Awake()
     {
-        
+        if(raycaster == null)
+        {
+            raycaster = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -25,9 +35,10 @@ public class Raycaster : MonoBehaviour
         {
             currentCamera = MainCamera;
         }
-        if (Physics.Raycast(currentCamera.position,currentCamera.forward))
+        if (Physics.Raycast(currentCamera.position,currentCamera.forward, out RaycastHit hit))
         {
-
+            targetPosition = hit.point;
+            Debug.Log(targetPosition);
         }
     }
 }
