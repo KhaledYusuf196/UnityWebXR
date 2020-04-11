@@ -9,7 +9,7 @@ public class Raycaster : MonoBehaviour
     Transform currentCamera;
     [SerializeField] Transform MainCamera, VRCamera;
     static Raycaster raycaster;
-    static Raycaster instance => raycaster;
+    public static Raycaster instance => raycaster;
 
     private void Awake()
     {
